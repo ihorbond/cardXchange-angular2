@@ -1,5 +1,7 @@
 <div class="page-content">
 
+<router-outlet></router-outlet>
+
 <p *ngIf="message" class="message"></p>
 
   <div *ngIf="defaultCard" class="one-card">
@@ -11,7 +13,7 @@
           </div>
           <div class="col-xs-8 information">
             <p class="name">{{defaultCard.fullName}}</p>
-            <p class="position-company">{{defaultCard.position}} at
+            <p class="position-company">{{defaultCard.position}}
             {{defaultCard.companyName}}  </p>
 
           </div>
@@ -19,9 +21,9 @@
   <div class="row">
   <div class="col-xs-4">
 
-  <div class="share" href="mailto:?subject={{defaultCard.fullName}} shared the card with you&body=
+  <div class="share"> <a href="mailto:?subject={{defaultCard.fullName}} shared the card with you&body=
   Hi here is the link to add my business card to your contacts: {{cardUrl}}">
-  <i class="material-icons">person_add</i></div>
+  <i class="material-icons">person_add</i></a></div>
   </div>
   <div class="col-xs-8">
   <p class="contact-info">

@@ -38,7 +38,10 @@ export class LoginComponent implements OnInit {
     .subscribe(user => {
                          this.user    = user;
                          this.message = null;
-                         if (user) this.router.navigate(['home']);
+                         if (user) {
+                           this.router.navigate(['home']);
+                           user = null;
+                         }
                          });
   }
 
@@ -46,11 +49,10 @@ export class LoginComponent implements OnInit {
     this.signupInfo.fullName = form.value.fullName;
     this.signupInfo.email    = form.value.email.toLowerCase();
     this.signupInfo.password = form.value.password;
-    console.log(this.signupInfo);
     this.auth.signup(this.signupInfo)
-    .subscribe((user => { this.user  = user;
+    .subscribe((user => { this.user    = user;
                           this.message = null;
-                          if (user) this.router.navigate(['']);
+                          if (user) this.router.navigate(['home']);
                          }),
                (err) =>   this.message = err   );
   }
@@ -59,14 +61,12 @@ export class LoginComponent implements OnInit {
   login(form: NgForm) {
     this.loginInfo.loginEmail    = form.value.loginEmail.toLowerCase();
     this.loginInfo.loginPassword = form.value.loginPassword;
-    console.log(this.loginInfo);
     this.auth.login(this.loginInfo)
     .subscribe((user => {
-                          this.user  = user;
+                          this.user    = user;
                           this.message = null;
-                          console.log(user);
                           if (user) {
-                            this.router.navigate(['']);
+                            this.router.navigate(['home']);
                           }
                         }),
                           (err) => this.message = err

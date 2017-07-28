@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardService }       from '../card.service';
+import { Router }            from '@angular/router';
+import { AuthorizationService} from '../authorization.service';
 
 declare var $: any;
 
@@ -10,18 +12,33 @@ declare var $: any;
   providers: [CardService]
 })
 export class ContactsComponent implements OnInit {
+  user: any;
   contacts: any;
   showNote: boolean = false;
   flipped:  boolean = false;
   message:  string;
   keyword:  string;
 
-  constructor(private card: CardService) { }
+  constructor(
+    private card: CardService,
+    private auth: AuthorizationService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.card.getContacts().subscribe(result => {
-      this.contacts = result.userInfo;
-    });
+    this.auth.isLoggedIn()
+    .subscribe(user => {
+                         this.user    = user;
+                         this.message = null;
+                         if (!user) this.router.navigate(['login']);
+                         this.getContacts(user._id);
+                         });
+  }
+
+  getContacts(id) {
+    this.card.getContacts(id).subscribe(result => {
+    this.contacts = result.userInfo;
+  });
   }
 
   saveNote(id) {
@@ -34,6 +51,11 @@ export class ContactsComponent implements OnInit {
   }
 
   removeContact(id) {
+    this.contacts.forEach((oneContact, index) => {
+      if (oneContact._id.toString() === id) {
+        this.contacts.splice(index, 1);
+      }
+    });
     this.card.removeContact(id)
     .subscribe(res => {
       this.message = res.message;
@@ -45,7 +67,6 @@ export class ContactsComponent implements OnInit {
   }
 
   cancelNote(id) {
-    // console.log(this.contacts);
     this.flip(id);
   }
 

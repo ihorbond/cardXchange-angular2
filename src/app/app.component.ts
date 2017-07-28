@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   message: string;
 
   constructor(
-              private auth: AuthorizationService,
+              private auth:   AuthorizationService,
               private router: Router
             ) {}
 
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
 
   logout() {
    this.auth.logout()
-   .subscribe(() => { this.user  = null;
+   .subscribe(() => { this.user    = null;
                       this.message = null;
                      },
            (err) =>   this.message = err);

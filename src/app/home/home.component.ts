@@ -17,7 +17,7 @@ message: string;
 user: any;
 defaultCard: any;
 qrcodeIcon: boolean = true;
-cardUrl: string = `https://cardxchange.herokuapp.com/add/${this.user._id}`;
+cardUrl: string;
 
   constructor(
     private cardService: CardService,
@@ -51,6 +51,7 @@ cardUrl: string = `https://cardxchange.herokuapp.com/add/${this.user._id}`;
     cards.forEach(oneCard => {
       if (oneCard.defaultSetting) {
         this.defaultCard = oneCard;
+        this.cardUrl = `https://cardxchange.herokuapp.com/add/${oneCard._id}`;
       }
     });
   }
