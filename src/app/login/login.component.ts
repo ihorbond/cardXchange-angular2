@@ -2,7 +2,6 @@ import { Component, OnInit }    from '@angular/core';
 import { AuthorizationService } from '../authorization.service';
 import { NgForm }               from '@angular/forms';
 import { Router }               from '@angular/router';
-// import { SignupComponent }      from '../signup/signup.component';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -37,11 +36,9 @@ export class LoginComponent implements OnInit {
     // check if user already logged in
     this.auth.isLoggedIn()
     .subscribe(user => {
-                         this.user  = user;
+                         this.user    = user;
                          this.message = null;
-                         console.log(user);
-                         //if logged in => go home
-                        //  if (user) this.router.navigate(['']);
+                         if (user) this.router.navigate(['home']);
                          });
   }
 

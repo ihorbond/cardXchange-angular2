@@ -36,8 +36,8 @@
 
       <li class="back" id="back{{oneContact._id}}" >
 
-       <!-- <textarea id="notes{{oneContact._id}}" placeholder="{{oneContact.notes}}"></textarea> -->
-       <textarea id="notes{{oneContact._id}}" placeholder="How did you meet {{oneContact.fullName}}"></textarea>
+       <textarea *ngIf="oneContact.notes" id="notes{{oneContact._id}}" placeholder="{{oneContact.notes}}"></textarea>
+       <textarea *ngIf="!oneContact.notes" id="notes{{oneContact._id}}" placeholder="How did you meet {{oneContact.fullName}}"></textarea>
        <button class="btn btn-success" (click)="saveNote(oneContact._id)"> Save </button>
        <button class="btn btn-warning" (click)="cancelNote(oneContact._id)"> Cancel </button>
       </li>
@@ -49,7 +49,6 @@
 </div>
 
       </div>
-
 
       <div class="sarah-nohe col-xs-12" id="contact{{oneContact._id}}">
 
@@ -68,12 +67,10 @@
       <a class="telephone" href="tel:7817107123">781.710.7123</a>
       </div>
 
-
 </div>
 
     </div>
   </ul>
-
 
 </div>
 </div>

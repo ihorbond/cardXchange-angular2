@@ -4,6 +4,8 @@ import { NgForm }            from '@angular/forms';
 // import { AddCardComponent}   from '../add-card/add-card.component';
 import { EditCardComponent } from '../edit-card/edit-card.component';
 // import { Http } from '@angular/http';
+import { AuthorizationService }  from '../authorization.service';
+import { Router }                from '@angular/router';
 
 declare var $:any;
 
@@ -11,13 +13,14 @@ declare var $:any;
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
-  providers: [CardService, EditCardComponent]
+  providers: [CardService, EditCardComponent, AuthorizationService]
 })
 export class UserProfileComponent implements OnInit {
 cards: any;
 message: string;
 user: string;
 showEditForm: boolean = false;
+cardOnId: any;
 // cardVisibility: boolean = true;
 // defaultCard: boolean = false;
 qrcodeIcon: boolean = true;
@@ -32,11 +35,19 @@ editedCard: any = {
 };
 
   constructor(
-    private cardService: CardService,
-    private editCardComp: EditCardComponent
+    private cardService:  CardService,
+    private editCardComp: EditCardComponent,
+    private auth:         AuthorizationService,
+    private router:       Router
   ) { }
 
   ngOnInit() {
+    this.auth.isLoggedIn()
+    .subscribe(user => {
+                         this.user    = user;
+                         this.message = null;
+                         if (!user) this.router.navigate(['login']);
+                         });
     $('#editForm').width($('#oneCard').width());
     this.cardService.getCards().subscribe(result =>
               {
@@ -52,7 +63,7 @@ editedCard: any = {
 
 }
  cancelEdit(id) {
-     $(`#editForm${id}`).slideToggle("fast");
+     $(`#editForm${id}`).slideToggle("slow");
  }
 
 
@@ -60,20 +71,23 @@ editedCard: any = {
 //defaultCard = false swith is off
  toggleDefault(id) {
    this.cards.forEach(oneCard => {
-     if (oneCard._id.toString() === id && oneCard.defaultSetting === true) {
-       oneCard.defaultSetting = false;
-       $(`#switch${id}`).css("float", "left");
-       $(`#switch${id}`).css("background", "rgb(129, 35, 15)");
-       $(`#switchLabel${id}`).text("OFF");
 
-     } else if (oneCard._id.toString() === id && oneCard.defaultSetting === false) {
-       oneCard.defaultSetting = true;
-       $(`#switch${id}`).css("float", "right");
-       $(`#switch${id}`).css("background", "rgb(45, 176, 109)");
-       $(`#switchLabel${id}`).text("ON");
-     }
+      if (oneCard._id.toString() === id) {
+          oneCard.defaultSetting = true;
+          this.cardService.makeDefault(id, true)
+          .subscribe(res => {
+            this.message = res.message;
+          });
+          this.cardOnId = id;
+        }
+   $(`#switch${oneCard._id}`).css({"float":"left", "background":"rgb(129, 35, 15)"});
+   $(`#switchLabel${oneCard._id}`).text("OFF");
+       });
 
-   });
+       $(`#switch${this.cardOnId}`).css({"float":"right", "background": "rgb(45, 176, 109)"});
+       $(`#switchLabel${this.cardOnId}`).text("ON");
+
+ }
 
    // makeDefault(id) {
    //   this.cardService.makeDefault(id, this.defaultCard)
@@ -82,7 +96,7 @@ editedCard: any = {
    //   });
 
    // }
- }
+ 
 
  // onOffSwitch(id) {
  //   if (this.cardVisibility) this.cardVisibility = false;
@@ -98,7 +112,6 @@ editedCard: any = {
 
 saveChanges(id, form: NgForm) {
   $(`#editForm${id}`).slideToggle("fast");
-  // this.editedCard._id         = id;
   this.editedCard.fullName    = form.value.fullName;
   this.editedCard.companyName = form.value.companyName;
   this.editedCard.position    = form.value.position;

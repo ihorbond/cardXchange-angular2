@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
     .subscribe(user => {
                          this.user    = user;
                          this.message = null;
-                         console.log(user);
                          if(!user) this.router.navigate(['login']);
                         });
   }

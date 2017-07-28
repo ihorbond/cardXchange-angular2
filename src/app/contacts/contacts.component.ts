@@ -26,7 +26,6 @@ export class ContactsComponent implements OnInit {
 
   saveNote(id) {
     let note = $(`#notes${id}`).val();
-    console.log(note);
     this.card.updateNote(id, note)
       .subscribe(res => {
         this.message = res.message;

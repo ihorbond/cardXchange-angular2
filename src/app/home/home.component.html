@@ -1,12 +1,12 @@
 <div class="page-content">
 
-
+<p *ngIf="message" class="message"></p>
 
   <div *ngIf="defaultCard" class="one-card">
       <div class="wrapper">
         <div class="row">
           <div class="col-xs-4 image-wrapper">
-            <img src="../../assets/images/default-pic.png" alt="{{defaultCard.fullName}}" >
+            <img src="{{defaultCard.profilePic}}" alt="{{defaultCard.fullName}}" >
 
           </div>
           <div class="col-xs-8 information">
@@ -18,7 +18,10 @@
             </div>
   <div class="row">
   <div class="col-xs-4">
-  <div class="share" (click)="shareCard(defaultCard._id)"><i class="material-icons">import_export</i></div>
+
+  <div class="share" href="mailto:?subject={{defaultCard.fullName}} shared the card with you&body=
+  Hi here is the link to add my business card to your contacts: {{cardUrl}}">
+  <i class="material-icons">person_add</i></div>
   </div>
   <div class="col-xs-8">
   <p class="contact-info">

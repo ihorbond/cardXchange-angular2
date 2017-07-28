@@ -26,7 +26,7 @@ user:    any;
 message: string;
 cardUrl: string;
 imgUpload = new FileUploader({
-  url: 'http://localhost:3000/api/profile/my-cards/add'
+  url: 'https://cardxchange.herokuapp.com/api/profile/my-cards/add'
 });
 
   constructor(
@@ -41,7 +41,7 @@ imgUpload = new FileUploader({
                this.auth.isLoggedIn()
                .subscribe(res => {
                  this.user = res;
-                 this.cardUrl = `http://localhost:3000/add/${this.user._id}`;
+                 this.cardUrl = `https://cardxchange.herokuapp.com/add/${this.user._id}`;
                });
             }
 
