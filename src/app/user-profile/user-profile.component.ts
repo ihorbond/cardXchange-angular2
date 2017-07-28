@@ -1,9 +1,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { CardService }       from '../card.service';
-import { NgForm }            from '@angular/forms';
-// import { AddCardComponent}   from '../add-card/add-card.component';
-import { EditCardComponent } from '../edit-card/edit-card.component';
-// import { Http } from '@angular/http';
+import { CardService }          from '../card.service';
+import { NgForm }               from '@angular/forms';
+import { EditCardComponent }     from '../edit-card/edit-card.component';
 import { AuthorizationService }  from '../authorization.service';
 import { Router }                from '@angular/router';
 
@@ -22,7 +20,6 @@ user: string;
 showEditForm: boolean = false;
 cardOnId: any;
 // cardVisibility: boolean = true;
-// defaultCard: boolean = false;
 qrcodeIcon: boolean = true;
 icon: any;
 editedCard: any = {
@@ -67,8 +64,6 @@ editedCard: any = {
  }
 
 
-//defaultCard = true switch is on
-//defaultCard = false swith is off
  toggleDefault(id) {
    this.cards.forEach(oneCard => {
 
@@ -89,14 +84,6 @@ editedCard: any = {
 
  }
 
-   // makeDefault(id) {
-   //   this.cardService.makeDefault(id, this.defaultCard)
-   //   .subscribe(res => {
-   //     this.message = res.message;
-   //   });
-
-   // }
- 
 
  // onOffSwitch(id) {
  //   if (this.cardVisibility) this.cardVisibility = false;
@@ -125,7 +112,7 @@ saveChanges(id, form: NgForm) {
 });
 // update cards array here
 // this is desparate! there gotta be a better way! \
-// i need to reassing the cards array
+// i need to simply reassing the cards array from json response...
 this.cards.forEach((oneCard, index) => {
   if (id === oneCard._id.toString()) {
     this.cards[index].fullName     = this.editedCard.fullName;
@@ -169,7 +156,7 @@ enlargeQr(id) {
       // this.cards    = res.cards;
     });
     //this is desparate! there gotta be a better way! \
-  //i need to simply reassing the cards array to reflect the changes
+  //i need to simply reassing the cards array to reflect the changes...
     this.cards.forEach((oneCard, index) => {
       if(id.toString() === oneCard._id.toString()) {
         this.cards.splice(index, 1);

@@ -60,15 +60,15 @@
   <form #editInfo="ngForm" id="editInfo" (ngSubmit)="saveChanges(oneCard._id, editInfo)">
   <label for id="editedFullName"> Full Name </label>
   <br>
-  <input id="editedFullName" maxlength="16" type="text" name="fullName" placeholder="{{oneCard.fullName}}" ngModel>
+  <input id="editedFullName" maxlength="24" type="text" name="fullName" placeholder="{{oneCard.fullName}}" ngModel>
   <br>
   <label for id="editedCompanyName"> Company Name </label>
     <br>
-  <input id="editedCompanyName" maxlength="16" type="text"  name="companyName" placeholder="{{oneCard.companyName}}" ngModel>
+  <input id="editedCompanyName" maxlength="24" type="text"  name="companyName" placeholder="{{oneCard.companyName}}" ngModel>
   <br>
   <label for id="editedPosition"> Position </label>
     <br>
-  <input id="editedPosition" type="text" maxlength="12" name="position" placeholder="{{oneCard.position}}" ngModel>
+  <input id="editedPosition" type="text" maxlength="24" name="position" placeholder="{{oneCard.position}}" ngModel>
   <br>
   <label for id="editedEmail"> Email </label>
     <br>
@@ -80,7 +80,7 @@
   <br>
   <label for id="editedlinkedIn"> LinkedIn </label>
     <br>
-  <input id="editedlLinkedIn" type="text" maxlength="30" name="linkedIn" placeholder="{{oneCard.linkedIn}}" ngModel>
+  <input id="editedlLinkedIn" type="text" maxlength="36" name="linkedIn" placeholder="{{oneCard.linkedIn}}" ngModel>
   <br>
   <button class="btn btn-success"> Save </button>
   <button class="btn btn-warning" (click)="cancelEdit(oneCard._id)"> Cancel </button>
