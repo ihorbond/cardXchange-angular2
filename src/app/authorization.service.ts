@@ -8,8 +8,8 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class AuthorizationService {
-// BASE_URL: string = 'https://cardxchange.herokuapp.com';
-BASE_URL: string = 'http://localhost:3000';
+BASE_URL: string = 'https://cardxchange.herokuapp.com';
+// BASE_URL: string = 'http://localhost:3000';
   constructor(private http: Http) { }
 
   handleError(e) {

@@ -5,9 +5,9 @@
 <p *ngIf="message" class="message"></p>
 
   <div *ngIf="!defaultCard" class="one-card">
-     <span class="welcome"> Welcome! Please navigate to Profile => Add Card to create your new personal digital card. </span>
+     <span class="welcome animated bounceInLeft"> Welcome! Please navigate to Profile => Add Card to create your new personal digital card. </span>
     <img id="landing" src="../../assets/images/landing_image.jpg">
-   <span class="welcome">Once done set it's default switch to <span id="on">"ON"</span></span>
+   <span class="welcome animated bounceInRight">Once done set it's default switch to <span id="on">"ON"</span></span>
   </div>
   <div *ngIf="defaultCard" class="one-card">
       <div class="wrapper">
@@ -19,6 +19,7 @@
           <div class="col-xs-8 information">
             <p class="name">{{defaultCard.fullName}}</p>
             <p class="position-company">{{defaultCard.position}}
+              <br>
             {{defaultCard.companyName}}  </p>
 
           </div>

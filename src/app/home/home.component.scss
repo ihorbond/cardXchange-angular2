@@ -1,5 +1,4 @@
-@import url( 'https://fonts.googleapis.com/css?family=PT+Sans');
-$font: 'PT Sans', sans-serif;
+
 $bg: linear-gradient(to right, #E75A7C, #141B41);
 $bg_wrapper: linear-gradient(to left, #306BAC, #141B41);
 $on: linear-gradient(to right, rgb(101, 181, 114), #058615);
@@ -54,7 +53,8 @@ color: white;
 }
 
 
-  .welcome, {
+  .welcome {
+    display: inline-block;
     color: white;
     font-size: 1.2em
   }
@@ -63,8 +63,8 @@ color: white;
     width: 100%;
     background: $bg_wrapper;
     color: white;
-    margin-left: 10px;
-    padding: 20px;
+    // margin-left: 10px;
+    padding: 1em;
     border-radius: 10px;
     box-shadow: 0 0 50px 1px white;
 

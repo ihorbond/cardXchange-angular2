@@ -26,8 +26,8 @@ user:    any;
 message: string;
 cardUrl: string;
 imgUpload = new FileUploader({
-  // url: 'https://cardxchange.herokuapp.com/api/profile/my-cards/add'
-  url: 'http://localhost:3000/api/profile/my-cards/add'
+  url: 'https://cardxchange.herokuapp.com/api/profile/my-cards/add'
+  // url: 'http://localhost:3000/api/profile/my-cards/add'
 });
 
   constructor(

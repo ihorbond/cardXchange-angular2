@@ -1,7 +1,7 @@
 <div *ngIf="user" class="page-content">
 
 <p class="message animated fadeInLeft" *ngIf="message"> {{message}} </p>
-<div class="new-card-info animated fadeInLeftBig">
+<div class="new-card-info animated fadeInLeft">
   <h2> Enter Information </h2>
   <form #newCardInfo="ngForm" id="newCardInfo" enctype="multipart/form-data" (ngSubmit)="addCard(newCardInfo)">
   Name: <br>        <input type="text" name="fullName" ngModel><br>
