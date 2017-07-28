@@ -4,6 +4,11 @@
 
 <p *ngIf="message" class="message"></p>
 
+  <div *ngIf="!defaultCard" class="one-card">
+     <span class="welcome"> Welcome! Please navigate to Profile => Add Card to create your new personal digital card. </span>
+    <img id="landing" src="../../assets/images/landing_image.jpg">
+   <span class="welcome">Once done set it's default switch to <span id="on">"ON"</span></span>
+  </div>
   <div *ngIf="defaultCard" class="one-card">
       <div class="wrapper">
         <div class="row">
@@ -41,13 +46,13 @@
 </div>
 
 <div class="feed">
-   <h2> Stats </h2>
-  <h4> Tip of the day </h4>
-  <p> <i class="material-icons">lightbulb_outline</i> put tip here </p>
-<p> You don't have any upcoming events </p>
- <p> You have been using application for ... </p>
- <p> which saved this many trees, this much money and
-   this much time </p>
+   <h2> Dashboard </h2>
+  <h4><i class="material-icons">lightbulb_outline</i>  Fact of the day :</h4>
+  <hr>
+   <p>According to research, sales increase by 2.5% for every 2000 cards you hand out</p>
+
+<!-- <p> You don't have any upcoming events </p> -->
+
 </div>
 
 </div>
