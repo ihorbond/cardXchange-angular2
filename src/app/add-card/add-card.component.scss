@@ -7,7 +7,7 @@
   border-radius: 5px;
 
   input {
-    width: 14em;
+    width: 50%;
     height: 2.5em;
     background: none;
     border: none;
@@ -17,7 +17,7 @@
 
   button {
     display: inline-block;
-    width: 7em;
+    width: 25%;
     text-transform: uppercase;
     font-weight: bolder;
     margin-top: 0.5em;
@@ -28,4 +28,12 @@
     color: white;
     box-sizing: border-box;
   }
+
+  #uploadLabel {
+    margin: 1em 0;
+    i{
+      vertical-align: bottom;
+      color: yellow;
+    }
+}
 }

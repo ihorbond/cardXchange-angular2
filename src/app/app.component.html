@@ -1,12 +1,12 @@
+<router-outlet></router-outlet>
+
 <div id="mySidenav" class="sidenav">
   <!-- <a (click)="showMenu()" class="menu"><span class="glyphicon glyphicon-remove"></span></a> -->
   <i class="material-icons" (click)="home()">home</i>
-  <i class="material-icons" (click)="about()">info_outline</i>
+  <i class="material-icons" (click)="info()">info_outline</i>
   <i class="material-icons" (click)="help()">help_outline</i>
   <i class="material-icons" (click)="logout()">exit_to_app</i>
 </div>
-
-<router-outlet></router-outlet>
 
 <div class="header navbar-fixed-top">
   <div class="row">
@@ -14,11 +14,11 @@
       <li class="col-xs-3"></li>
       <li class="col-xs-6">
         <a *ngIf="user" [routerLink]="['profile']" class="greeting">Hello, {{user.fullName}}</a>
-        <a *ngIf="!user"(click)="logoClicked()" class="logo">{{title}}</a>
+        <a *ngIf="!user"[routerLink]="['home']" class="logo">{{title}}</a>
       </li>
-      <li *ngIf="!user" class="col-xs-3">
-      </li>
-      <li *ngIf="user" class="col-xs-3">
+      <!-- <li *ngIf="!user" class="col-xs-3">
+      </li> -->
+      <li id="menuIcon" class="col-xs-3">
         <a (click)="showMenu()" class="menu"><span class="glyphicon glyphicon-th-list"></span></a>
       </li>
     </ul>
@@ -26,7 +26,7 @@
 </div>
 
 
-<div *ngIf="user" class="footer navbar-fixed-bottom">
+<div id="footer" class="footer navbar-fixed-bottom">
   <div class="row">
     <ul>
       <li class="col-xs-3">
@@ -36,7 +36,7 @@
         <a id="profile" [routerLink]="['profile']"><i class="material-icons">person</i></a>
       </li>
       <li class="col-xs-3">
-        <a id="events"><i class="material-icons">person_pin</i></a>
+        <a id="events" [routerLink]="['events']"><i class="material-icons">person_pin</i></a>
       </li>
     </ul>
   </div>

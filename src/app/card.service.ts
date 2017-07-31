@@ -7,8 +7,8 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class CardService {
-BASE_URL: string = 'https://cardxchange.herokuapp.com';
- // BASE_URL: string = 'http://localhost:3000';
+// BASE_URL: string = 'https://cardxchange.herokuapp.com';
+ BASE_URL: string = 'http://localhost:3000';
   constructor(private http: Http) { }
 
 //get all saved contacts

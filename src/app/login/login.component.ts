@@ -2,6 +2,7 @@ import { Component, OnInit }    from '@angular/core';
 import { AuthorizationService } from '../authorization.service';
 import { NgForm }               from '@angular/forms';
 import { Router }               from '@angular/router';
+import { AppComponent}          from '../app.component';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -11,7 +12,7 @@ declare var $:any;
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.min.css'],
-  providers: [AuthorizationService]
+  providers: [AuthorizationService, AppComponent]
 })
 
 export class LoginComponent implements OnInit {
@@ -29,20 +30,11 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private auth: AuthorizationService
+    private auth: AuthorizationService,
+    private app: AppComponent
   ) { }
 
   ngOnInit() {
-    // check if user already logged in
-    this.auth.isLoggedIn()
-    .subscribe(user => {
-                         this.user    = user;
-                         this.message = null;
-                         if (user) {
-                           this.router.navigate(['home']);
-                           user = null;
-                         }
-                         });
   }
 
   signup(form: NgForm) {
@@ -52,7 +44,10 @@ export class LoginComponent implements OnInit {
     this.auth.signup(this.signupInfo)
     .subscribe((user => { this.user    = user;
                           this.message = null;
-                          if (user) this.router.navigate(['home']);
+                          if (user) {
+                            this.router.navigate(['home']);
+                            this.app.showMenus();
+                          }
                          }),
                (err) =>   this.message = err   );
   }
@@ -66,7 +61,8 @@ export class LoginComponent implements OnInit {
                           this.user    = user;
                           this.message = null;
                           if (user) {
-                            this.router.navigate(['home']);
+                            this.app.showMenus();
+                            this.router.navigate(['']);
                           }
                         }),
                           (err) => this.message = err
@@ -79,16 +75,15 @@ export class LoginComponent implements OnInit {
     if (option === 'emailA') {
       $('#emailLi').toggleClass('inversed-li');
       $('.email-login').slideToggle("fast");
-      // $('.nav-tabs > li').removeClass('inversed-li');
     }
 
     if (option === 'linkedInA') {
       $('#linkedInLi').toggleClass('inversed-li');
       $('.linkedin-login').slideToggle("fast");
     }
-    if (option === 'patternA') {
-      $('#patternLi').toggleClass('inversed-li');
-      $('.pattern-login').slideToggle("fast");
+    if (option === 'fingerprintA') {
+      $('#fingerprintLi').toggleClass('inversed-li');
+      $('.fingerprint-login').slideToggle("fast");
     }
     if (option === 'signupA') {
       $('#signupLi').toggleClass('inversed-li');

@@ -1,0 +1,25 @@
+<div id="mySidenav" class="sidenav">
+  <!-- <a (click)="showMenu()" class="menu"><span class="glyphicon glyphicon-remove"></span></a> -->
+  <i class="material-icons" [routerLink]="['home']">home</i>
+  <i class="material-icons" [routerLink]="['about']">info_outline</i>
+  <i class="material-icons" [routerLink]="['help']">help_outline</i>
+  <i class="material-icons" (click)="logout()">exit_to_app</i>
+</div>
+
+<router-outlet></router-outlet>
+
+<div class="footer navbar-fixed-bottom">
+  <div class="row">
+    <ul>
+      <li class="col-xs-3">
+        <a id="contacts" [routerLink]="['contacts']"><i class="material-icons">people</i></a>
+      </li>
+      <li class="col-xs-6">
+        <a id="profile" [routerLink]="['profile']"><i class="material-icons">person</i></a>
+      </li>
+      <li class="col-xs-3">
+        <a id="events" [routerLink]="['events']"><i class="material-icons">person_pin</i></a>
+      </li>
+    </ul>
+  </div>
+</div>

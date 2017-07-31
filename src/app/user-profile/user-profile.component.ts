@@ -19,7 +19,6 @@ message: string;
 user: string;
 showEditForm: boolean = false;
 cardOnId: any;
-// cardVisibility: boolean = true;
 qrcodeIcon: boolean = true;
 icon: any;
 editedCard: any = {
@@ -57,10 +56,14 @@ editedCard: any = {
 
   editCard(id) {
     $(`#editForm${id}`).slideToggle("slow");
-
 }
+
  cancelEdit(id) {
-     $(`#editForm${id}`).slideToggle("slow");
+     this.editCard(id);
+ }
+
+ shareCard(id) {
+
  }
 
 
@@ -75,13 +78,10 @@ editedCard: any = {
           });
           this.cardOnId = id;
         }
-   $(`#switch${oneCard._id}`).css({"float":"left", "background":"rgb(129, 35, 15)"});
-   $(`#switchLabel${oneCard._id}`).text("OFF");
+   $(`#switch${oneCard._id}`).css({"float":"left", "background":"red"});
        });
 
        $(`#switch${this.cardOnId}`).css({"float":"right", "background": "rgb(45, 176, 109)"});
-       $(`#switchLabel${this.cardOnId}`).text("ON");
-
  }
 
 
@@ -142,6 +142,7 @@ enlargeQr(id) {
         $(`#QR${id}`).slideToggle("fast");
       }
 }
+
 
   deleteCard(id) {
      //update cards collection

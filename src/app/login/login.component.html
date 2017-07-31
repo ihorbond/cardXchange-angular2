@@ -25,20 +25,19 @@
         <nav class="navbar navbar-inverse">
 
 <div class="row">
-  <ul class="nav nav-tabs">
-          <li id="emailLi" role="presentation" class="col-xs-3">
-          <a id="emailA" (click)="toggleLogin($event)"><i class="material-icons">email</i></a>
+  <ul>
+          <li id="emailLi" class="col-xs-3" (click)="toggleLogin($event)">
+          <a id="emailA"><i class="material-icons">email</i></a>
           </li>
-          <li id="linkedInLi" class="col-xs-3">
-            <a id="linkedInA" (click)="toggleLogin($event)"><i class="material-icons">contact_mail</i></a>
+          <li id="linkedInLi" class="col-xs-3" (click)="toggleLogin($event)">
+            <a id="linkedInA"><i class="material-icons">contact_mail</i></a>
           </li>
-          <li id="patternLi" class="col-xs-3">
-            <a id="patternA" (click)="toggleLogin($event)"><i class="glyphicon glyphicon-th"></i></a>
+          <li id="fingerprintLi" class="col-xs-3" (click)="toggleLogin($event)">
+            <a id="fingerprintA"><i class="material-icons">fingerprint</i></a>
           </li>
-          <li id="signupLi" class="col-xs-3">
-            <a id="signupA" (click)="toggleLogin($event)"><i class="material-icons">assignment_ind</i></a>
+          <li id="signupLi" class="col-xs-3" (click)="toggleLogin($event)">
+            <a id="signupA"><i class="material-icons">assignment_ind</i></a>
           </li>
-          <!-- <i class="material-icons">fingerprint</i> -->
     </ul>
 </div>
 
@@ -59,13 +58,12 @@
 <div class="row">
  <div class="col-xs-2">
 
-   <!-- <span class="glyphicons glyphicons-keys"></span> -->
-     <span class="glyphicon glyphicon-lock"></span>
+    <i class="material-icons">vpn_key</i>
 </div>
   <div class="col-xs-10">
   <input id="loginPassword" class="password" type="password" placeholder="Password" name="loginPassword" ngModel>
 </div>
-<button class="btn btn-danger"> Login </button>
+<button class="btn btn-success" type="submit"> Login </button>
 </div>
 <!-- <div id="or">OR</div> -->
 </form>
@@ -74,12 +72,12 @@
 
 <!-- login with linkedIn -->
 <div class="linkedin-login">
-<a href="#"><img src="assets/images/linkedinSignin.png"> </a>
+<img src="assets/images/linkedinSignin.png">
 </div>
 
 <!-- pattern login  -->
-<div class="pattern-login">
- Pattern login
+<div class="fingerprint-login">
+ Fingerprint login coming soon
 </div>
 
 <!-- signup  -->
@@ -96,7 +94,7 @@
   <label for id="login-password"> Password </label>
   <input id="login-password" type="password" name="password" ngModel>
   <br>
-  <button class="btn btn-success"> Sign Up </button>
+  <button class="btn btn-success" type="submit"> Sign Up </button>
   </form>
 </div>
 

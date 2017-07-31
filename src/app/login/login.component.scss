@@ -3,12 +3,6 @@
   padding: 0;
 }
 
-// #qr {
-//   text-align: center;
-//   margin: 1em auto;
-//   background: none;
-// }
-//
 @import "../../assets/css/auth";
 
 #badgePhoto {
@@ -55,7 +49,6 @@
     color: white;
 
     button {
-      z-index: 3;
       margin-top: 0.5em;
       font-weight: bold;
       text-transform: uppercase;
@@ -67,7 +60,6 @@
       width: 100%;
       height: 2em;
     }
-
   }
 }
 
@@ -82,8 +74,7 @@
   background: none;
 }
 
-a,
-a:hover {
+a {
   text-transform: uppercase;
   text-decoration: none;
   color: white;
@@ -99,14 +90,6 @@ a:hover {
   }
 }
 
-.navbar {
-  .glyphicon {
-    vertical-align: super;
-    color: white;
-    font-size: 1.5em;
-  }
-}
-
 .inversed-li {
   background-color: white;
   i {
@@ -116,8 +99,9 @@ a:hover {
 
 .email-login,
 .linkedin-login,
-.pattern-login,
+.fingerprint-login,
 .signup-login {
+  color: white;
   display:none;
   width: 100%;
   height: 100%;
@@ -125,11 +109,9 @@ a:hover {
 }
 
 .email-login {
-  .glyphicon {
     vertical-align: -webkit-baseline-middle;
-    color: grey;
-    font-size: 1.5em;
-  }
+    // color: grey;
+    // font-size: 1em;
 }
 
 .linkedin-login img {
@@ -141,7 +123,7 @@ a:hover {
   h4 {
     margin-bottom: 0.5em;
   }
-  color: white;
+  // color: white;
   button, label, input {
     border: none;
     width: 100%;

@@ -1,8 +1,8 @@
-import { Component, OnInit }     from '@angular/core';
-import { AuthorizationService }  from './authorization.service';
-import { NgForm }                from '@angular/forms';
-import { NgClass }               from '@angular/common';
-import { Router }                from '@angular/router';
+import { Component, OnInit }      from '@angular/core';
+import { AuthorizationService }   from './authorization.service';
+import { NgForm }                 from '@angular/forms';
+import { NgClass }                from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -23,29 +23,27 @@ export class AppComponent implements OnInit {
   message: string;
 
   constructor(
-              private auth:   AuthorizationService,
-              private router: Router
+              private auth: AuthorizationService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute
             ) {}
 
   ngOnInit() {
-    //check if user already logged in
     this.auth.isLoggedIn()
     .subscribe(user => {
-                         this.user    = user;
-                         this.message = null;
-                         if(!user) this.router.navigate(['login']);
+                         this.user = user;
                         });
   }
 
-
- logoClicked() {
-   if (this.user) this.router.navigate(['']);
-     else this.router.navigate(['login']);
- }
+  showMenus() {
+    $("#footer").css("display","inherit");
+    $("#menuIcon").css("display","inherit");
+  }
 
   logout() {
+   this.user = null;
    this.auth.logout()
-   .subscribe(() => { this.user    = null;
+   .subscribe(() => {
                       this.message = null;
                      },
            (err) =>   this.message = err);

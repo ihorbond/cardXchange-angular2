@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { CardService }       from '../card.service';
-import { Router }            from '@angular/router';
+import { Component, OnInit }   from '@angular/core';
+import { CardService }         from '../card.service';
+import { Router }              from '@angular/router';
 import { AuthorizationService} from '../authorization.service';
+import { AppComponent }        from '../app.component';
 // import { UserProfileComponent } from '../user-profile/user-profile.component';
 declare var $:any;
 
@@ -9,7 +10,7 @@ declare var $:any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [CardService, AuthorizationService]
+  providers: [CardService, AuthorizationService, AppComponent]
 })
 export class HomeComponent implements OnInit {
 cards: any;
@@ -22,7 +23,8 @@ cardUrl: string;
   constructor(
     private cardService: CardService,
     private router:      Router,
-    private auth:        AuthorizationService
+    private auth:        AuthorizationService,
+    private app:         AppComponent
   ) { }
 
   enlargeQr() {
@@ -35,13 +37,11 @@ cardUrl: string;
     .subscribe(user => {
                          this.user    = user;
                          this.message = null;
-                         if (!user) this.router.navigate(['login']);
                          });
     this.cardService.getCards().subscribe(result =>
               {
                 this.message = result.message;
                 this.cards   = result.userInfo.cards;
-                this.user    = result.userInfo;
                 this.getDefaultCard(result.userInfo.cards);
               }
     )
@@ -54,6 +54,7 @@ cardUrl: string;
         this.cardUrl = `https://cardxchange.herokuapp.com/add/${oneCard._id}`;
       }
     });
+    // location.reload();
   }
 
 }

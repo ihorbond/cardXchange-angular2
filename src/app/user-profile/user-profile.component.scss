@@ -1,5 +1,5 @@
 @import url( 'https://fonts.googleapis.com/css?family=PT+Sans');
-$font: 'PT Sans', sans-serif;
+// $font: 'PT Sans', sans-serif;
 $bg: linear-gradient(to right, #E75A7C, #141B41);
 $bg_wrapper: linear-gradient(to left, #306BAC, #141B41);
 $black: #212129;
@@ -11,14 +11,14 @@ $black: #212129;
   border-radius: 20px;
   width: 60px;
   height: 20px;
-  background: rgb(135, 132, 128);
+  background: rgb(195, 193, 191);
   .inner-switch {
     padding: 5px;
     float:left;
-    width: 25px;
+    width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: rgb(213, 24, 24);
+    background: red;
     transition: float 0.9s ;
   }
   .switch-label {
@@ -30,16 +30,13 @@ $black: #212129;
   }
 }
 
-.default {
-  color: white;
-  text-align: center;
-  font-weight: bolder;
+.cards {
+  margin-bottom: 5em;
 }
 
 * {
   margin: 0;
   padding: 0;
-  font-family: $font;
   text-decoration: none;
 }
 
@@ -106,10 +103,6 @@ li {
     margin: 20px 0 0 10px;
   }
 
-  .information {
-    float:left;
-  }
-
   .contact-info {
     float:left;
     img {
@@ -122,14 +115,16 @@ li {
   .controls {
     text-align: center;
     padding-left: 0.5em;
-    img {
-      width: 3em;
-      height: 4em;
+    a {
+      display: inline-block;
+      margin-bottom: 1em;
     }
     i {
-      transform: rotate(110deg);
       color: white;
-      font-size: 3.5em;
+      font-size: 2.5em;
+    }
+    #deleteForever {
+      color: red;
     }
   }
 
@@ -144,7 +139,7 @@ li {
       color: red;
       border-bottom: 2px solid white;
     }
-    button {
+    button, a {
       display:inline-block;
       width: 5em;
       text-transform: uppercase;

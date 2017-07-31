@@ -9,6 +9,7 @@ import { CardService }          from './card.service';
 import { AddCardComponent }     from './add-card/add-card.component';
 import { FormsModule }          from '@angular/forms';
 import { HttpModule }           from '@angular/http';
+import { AuthGuardService}      from './auth-guard.service';
 //qr code generator
 import { QRCodeModule }         from 'angular2-qrcode'
 import { AboutComponent }       from './about/about.component'
@@ -21,6 +22,7 @@ import { HomeComponent }        from './home/home.component';
 import { EventsComponent }      from './events/events.component';
 import { SearchPipe }           from './pipes/search.pipe';
 import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
+import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
     HomeComponent,
     EventsComponent,
     SearchPipe,
+    NavigationMenuComponent,
   ],
   imports: [
     FileUploadModule,
@@ -45,7 +48,11 @@ import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
     BrowserModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [CardService, AuthorizationService],
+  providers: [
+    CardService,
+    AuthorizationService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
